@@ -1,0 +1,372 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fb;
+            color: #333;
+        }
+
+        /* Navbar Styling */
+        nav {
+            background-color: #333;
+            padding: 15px 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: Arial, Helvetica, sans-serif;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #2575fc;
+        }   
+        nav ul li a.active {
+            color: rgb(12, 189, 118);
+            font-weight: bold;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            padding: 40px 20px;
+            text-align: center;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin: 10px 0 0;
+        }
+        #home {
+            background: linear-gradient(45deg, rgba(249, 40, 53, 0.3), rgba(253, 29, 29, 0.3)); /* Gradient background */
+            position: relative;
+            overflow: hidden;
+            padding: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            border-radius: 10px;
+        }
+        
+        #home:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(249, 40, 53, 0.6) 10%, rgba(0, 0, 0, 0.1) 90%);
+            filter: blur(20px);
+            z-index: -1;
+        }
+        /* Profile Image */
+        .profile-image {
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(249, 40, 53, 0.8), 0 0 30px rgba(253, 29, 29, 0.6), 0 0 50px rgba(249, 40, 53, 0.5); /* Glowing circular effect */
+            position: relative;
+    transition: transform 0.3s ease-in-out;
+    animation: waveGlow 2s infinite; /* Apply wave animation */
+        }
+        
+        /* Hover effect to enlarge the image */
+        .profile-image:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Keyframes for wave animation effect */
+        @keyframes waveGlow {
+                0% {
+                    box-shadow: 0 0 30px rgba(162, 75, 130, 0.6), 0 0 50px rgba(146, 198, 95, 0.4), 0 0 70px rgba(203, 67, 128, 0.2);
+                }
+                50% {
+                    box-shadow: 0 0 60px rgba(249, 40, 53, 1), 0 0 90px rgba(253, 29, 29, 0.8), 0 0 120px rgba(75, 198, 188, 0.6);
+                }
+                75% {
+                    box-shadow: 0 0 30px rgba(165, 69, 121, 0.6), 0 0 50px rgba(89, 134, 179, 0.4), 0 0 70px rgba(185, 61, 125, 0.2);
+                }
+                100% {
+                    box-shadow: 0 0 30px rgba(249, 40, 207, 0.6), 0 0 50px rgba(181, 35, 128, 0.4), 0 0 70px rgba(185, 61, 125, 0.2);
+                }
+            }
+        /* Section Styling */
+        .section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        /* Information Cards */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            margin-bottom: 30px;
+            overflow: hidden;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card-content p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #2575fc;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            nav ul {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                padding: 0;
+                margin: 0;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            nav ul li a {
+                font-size: 0.9rem;
+                color: white;
+            }
+
+            .hamburger {
+                display: none; /* Remove hamburger menu */
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul li a {
+                font-size: 0.8rem; /* Smaller text for mobile */
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .card {
+                width: 100%;
+            }
+        }
+        .dynamic-text {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #cb0d39;
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid #e70a0d;
+            min-width: 12ch;
+            text-align: left;        
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <ul>
+            <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+            <li><a href="/about/" class="{% if request.path == '/about/' %}active{% endif %}">About</a></li>
+            <li><a href="/projects/" class="{% if request.path == '/projects/' %}active{% endif %}">Projects</a></li>
+            <li><a href="/contact/" class="{% if request.path == '/contact/' %}active{% endif %}">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header id="home">
+        <div>
+            <h1>Welcome to My Portfolio</h1>
+            <p>Hello, I'm a passionate <span class="dynamic-text"></span></p>
+        </div>
+        <!-- Profile Image on the Right -->
+        <img src="{% static 'images/2550.jpg' %}" alt="Profile Image" class="profile-image">
+        
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="section" id="projects">
+        <h2>Featured Projects</h2>
+        <div class="card-container">
+            <!-- Card 1 -->
+            <div class="card">
+                <img src="{% static 'images/10189.jpg' %}" alt="Project 1">
+                <div class="card-content">
+                    <h3>Project 1</h3>
+                    <p>Details about this amazing project will go here.</p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="{% static 'images/8980.jpg' %}" alt="Project 2">
+                <div class="card-content">
+                    <h3>Project 2</h3>
+                    <p>Details about this amazing project will go here.</p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <img src="{% static 'images/8159.jpg' %}" alt="Project 3">
+                <div class="card-content">
+                    <h3>Project 3</h3>
+                    <p>Details about this amazing project will go here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Rosan portfolio | <a href="/contact/">Contact Me</a></p>
+    </footer>
+
+</body>
+</html>
+  <!-- JavaScript to add 'active' class -->
+  <script>
+    const currentPath = window.location.hash;
+
+    const navLinks = {
+        home: document.getElementById('homeLink'),
+        about: document.getElementById('aboutLink'),
+        projects: document.getElementById('projectsLink'),
+        contact: document.getElementById('contactLink')
+    };
+
+    // Add 'active' class based on current path
+    if (currentPath === '#home') {
+        navLinks.home.classList.add('active');
+    } else if (currentPath === '#about') {
+        navLinks.about.classList.add('active');
+    } else if (currentPath === '#projects') {
+        navLinks.projects.classList.add('active');
+    } else if (currentPath === '#contact') {
+        navLinks.contact.classList.add('active');
+    }
+</script>
+<script>
+    const textArray = ["Web Developer", "Photographer", "Web Designer"];
+    let textIndex = 0;
+    let charIndex = 0;
+    let typingDelay = 50;
+    let erasingDelay = 100;
+    let newTextDelay = 2000;
+    const dynamicText = document.querySelector(".dynamic-text");
+
+    function type() {
+        if (charIndex < textArray[textIndex].length) {
+            dynamicText.textContent += textArray[textIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, typingDelay);
+        } else {
+            setTimeout(erase, newTextDelay);
+        }
+    }
+
+    function erase() {
+        if (charIndex > 0) {
+            dynamicText.textContent = textArray[textIndex].substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(erase, erasingDelay);
+        } else {
+            textIndex = (textIndex + 1) % textArray.length;
+            setTimeout(type, typingDelay + 80);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(type, newTextDelay + 150);
+    });
+</script>

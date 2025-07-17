@@ -1,0 +1,331 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+            <li><a href="/about/" class="{% if request.path == '/about/' %}active{% endif %}">About</a></li>
+            <li><a href="/projects/" class="{% if request.path == '/projects/' %}active{% endif %}">Projects</a></li>
+            <li><a href="/contact/" class="{% if request.path == '/contact/' %}active{% endif %}">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>About Me</h1>
+            <div class="underline"></div>
+        </header>
+
+        <section class="about-content">
+            <p class="intro">Hi, I'm <strong>Rosan Rana Magar</strong>, a web developer passionate about building creative and dynamic websites. I specialize in both frontend and backend development using Django and modern technologies.</p>
+
+            <div class="section-title">
+                <h2>What I Do</h2>
+            </div>
+            <div class="services">
+                <div class="service">
+                    <img src="{% static 'images/0f6703883c54aa54fee476ceef27376d.jpg' %}" alt="Frontend Development" style="height: 100px; width: 100px;">
+                    <h3>Frontend Development</h3>
+                    <p>Creating beautiful, responsive front-end experiences using HTML, CSS, JavaScript</p>
+                </div>
+                <div class="service">
+                    <img src="{% static 'images/istockphoto-1392686375-612x612.jpg' %}" alt="Backend Development" style="height: 100px; width: 100px;">
+                    <h3>Backend Development</h3>
+                    <p>Building powerful backends with Django, Python, and RESTful APIs to support dynamic applications.</p>
+                </div>               
+                <div class="service">
+                    <img src="{% static 'images/database-icon-logo-modern-line-style-high-quality-black-outline-pictogram-web-site-design-mobile-apps-vector-81367896.jpg' %}" alt="Database Management" style="height: 100px; width: 100px;">
+                    <h3>Database Management</h3>
+                    <p>Managing data effectively with databases like MySQL for secure, efficient data storage.</p>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <h2>Skills</h2>
+            </div>
+            <div class="skills">
+                <ul>
+                    <li><strong>Django</strong> - Web development framework for rapid, scalable apps.</li>
+                    <li><strong>Html,CSS,JavaScript</strong> - Interactive, user-friendly frontend development.</li>
+                    <li><strong>MySQL</strong> - Database management systems for reliable data storage.</li>
+                    <li><strong>Git & GitHub</strong> - Version control and collaboration in code.</li>
+                    <li><strong>Responsive Design</strong> - Ensuring apps work across devices and screen sizes.</li>
+                </ul>
+            </div>
+
+            <div class="section-title">
+                <h2>Let's Connect</h2>
+            </div>
+            <p>If you'd like to discuss a project or just want to say hello, feel free to <a href="/contact/">reach out</a>.</p>
+        </section>
+
+        <footer>
+            <a href="/" class="back-link">Back to Home</a>
+        </footer>
+    </div>
+</body>
+</html>
+
+<style>
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, rgba(249, 40, 53, 0.3), rgba(253, 29, 29, 0.3)); /* Gradient background */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    padding: 40px 20px;
+    margin: 0;
+}
+
+/* Container styling */
+.container {
+    max-width: 800px;
+    width: 100%;
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Header styling */
+header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.underline {
+    width: 50px;
+    height: 4px;
+    background-color: #e74c3c;
+    margin: 0 auto;
+}
+
+/* About Content Styling */
+.about-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.intro {
+    margin-bottom: 30px;
+}
+
+.section-title h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #e74c3c;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.services {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.service {
+    text-align: center;
+    flex: 1;
+    margin: 0 15px;
+}
+
+.service img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+.service h3 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.skills ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.skills ul li {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+/* Footer styling */
+footer {
+    margin-top: 40px;
+}
+
+footer .back-link {
+    text-decoration: none;
+    color: #3498db;
+    font-size: 1rem;
+}
+
+footer .back-link:hover {
+    text-decoration: underline;
+}
+
+/* Navbar styling */
+nav {
+    background-color: #333;
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #3498db;
+}
+
+nav ul li a.active {
+    color: #1abc9c;
+    font-weight: bold;
+}
+.skills {
+    margin-top: 30px;
+}
+
+.skills ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.skills ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #34495e;
+}
+
+.skills ul li i {
+    font-size: 1.4rem; /* Icon size */
+    color: #e74c3c; /* Icon color */
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.skills ul li strong {
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+.skills ul li:hover i {
+    color: #3498db; /* Change icon color on hover */
+}
+
+.skills ul li:hover {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .skills ul li {
+        font-size: 1rem;
+    }
+
+    .skills ul li i {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px;
+    }
+
+    .about-content {
+        font-size: 1rem;
+    }
+
+    .services {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service {
+        margin-bottom: 30px;
+    }
+
+    nav ul li a {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+
+    .about-content {
+        font-size: 0.9rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul li a {
+        font-size: 0.9rem;
+    }
+}
+</style>

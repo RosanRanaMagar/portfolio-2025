@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+            <li><a href="/about/" class="{% if request.path == '/about/' %}active{% endif %}">About</a></li>
+            <li><a href="/projects/" class="{% if request.path == '/projects/' %}active{% endif %}">Projects</a></li>
+            <li><a href="/contact/" class="{% if request.path == '/contact/' %}active{% endif %}">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Contact Me</h1>
+        </header>
+
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form method="post" class="contact-form">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+
+        <footer>
+            <a href="/" class="back-link">Back to Home</a>
+        </footer>
+    </div>
+</body>
+</html>
+
+<style>
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: radial-gradient(circle, rgba(249, 40, 53, 0.6) 10%, rgba(0, 0, 0, 0.1) 90%);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    margin: 0;
+}
+
+/* Container for centering content */
+.container {
+    max-width: 600px;
+    width: 100%;
+    background-color: rgb(232, 224, 229);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+header h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #e74c3c;
+}
+
+/* Form Styling */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-form input, .contact-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: #e74c3c;
+    outline: none;
+}
+
+.contact-form button {
+    padding: 15px;
+    background-color: #e74c3c;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #c0392b;
+}
+
+/* Back to Home link */
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer .back-link {
+    text-decoration: none;
+    color: #3498db;
+    font-size: 16px;
+}
+
+footer .back-link:hover {
+    text-decoration: underline;
+}
+
+/* Navbar Styling */
+nav {
+    background-color: #333;
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #2575fc;
+}   
+
+nav ul li a.active {
+    color: rgb(12, 189, 118);
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .contact-form button {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form input, .contact-form textarea {
+        font-size: 14px;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    nav ul li a {
+        font-size: 0.9rem;
+        color: white;
+    }
+
+    .hamburger {
+        display: none; /* Remove hamburger menu */
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul li a {
+        font-size: 0.8rem; /* Smaller text for mobile */
+    }
+}
+</style>

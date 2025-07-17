@@ -1,0 +1,202 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Navbar Styling */
+        nav {
+            background-color: #333;
+            padding: 15px 0;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 20px;
+        }
+        nav ul li a {
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: Arial, Helvetica, sans-serif;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #2575fc;
+        }
+        nav ul li a.active {
+            color: rgb(12, 189, 118);
+            font-weight: bold;
+        }
+        /* General Layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background: radial-gradient(circle, rgba(249, 40, 53, 0.6) 10%, rgba(0, 0, 0, 0.1) 90%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+        .projects-container {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .project-section {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 20px;
+        }
+        .project-column {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .project-column:last-child {
+            margin-right: 0;
+        }
+        .project-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .project-description {
+            font: 1rem Arial, Helvetica, sans-serif bold;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        h2 {
+            color: #e74c3c;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        .btn {
+            background-color: #db3477;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #9a4073;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+            .project-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .project-column {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            .project-image {
+                width: 100%;
+            }
+            nav ul li a {
+                font-size: 1rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+            .project-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .project-column {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            .project-image {
+                width: 100%;
+            }
+            nav ul li a {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+            <li><a href="/about/" class="{% if request.path == '/about/' %}active{% endif %}">About</a></li>
+            <li><a href="/projects/" class="{% if request.path == '/projects/' %}active{% endif %}">Projects</a></li>
+            <li><a href="/contact/" class="{% if request.path == '/contact/' %}active{% endif %}">Contact</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>My Projects</h1>
+        <p>Explore my diverse set of projects below.</p>
+    </header>
+    <main>
+        <div class="projects-container">
+            {% for project in projects %}
+            <section class="project-section">
+                <div class="project-column">
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-image">
+                </div>
+                <div class="project-column">
+                    <h2>{{ project.title }}</h2>
+                    <p class="project-description">{{ project.description }}</p>
+                    <a href="{{ project.link }}" class="btn">View Project <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </section>
+            {% empty %}
+            <p>No projects available.</p>
+            {% endfor %}
+        </div>
+    </main>
+    <footer>
+        <p>© Rosan_Rana_Magar Portfolio. All rights reserved.</p>
+    </footer>
+    <script>
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function (event) {
+                // Allow default behavior for external links
+            });
+        });
+    </script>
+</body>
+</html>
